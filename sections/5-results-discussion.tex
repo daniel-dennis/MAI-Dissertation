@@ -1,0 +1,60 @@
+\chapter{Results}
+\label{chap:res}
+\definecolor{dd_green}{HTML}{00ff00}
+\definecolor{dd_red}{HTML}{ff0000}
+\definecolor{dd_yellowgreen}{HTML}{88ff00}
+\definecolor{dd_yellow}{HTML}{ffff00}
+\definecolor{dd_yelloworange}{HTML}{ff8800}
+Section \ref{ap:sum} provides a summary of the baseline and results using the {\slshape Global Error} $E^G$ and {\slshape Local Error} $E^L$ metrics. Sections thereafter provide the full baseline and results using the per-joint {\slshape Global Error} $E^G_n$ and {\slshape Local Error} $E^L_n$ metrics. See Section \ref{sec:pm} for details on the performance metrics. The real dataset is the {\slshape MSRA} dataset, and the synthetic datasets are the {\slshape Random MANO} dataset and {\slshape IK MANO} dataset, see Section \ref{sec:sdgm} for details. See Figure \ref{fig:sd:hand} for details on the joint names.
+
+% Good results (around 10 mm) are highlighted in {\bfseries\colorbox{dd_green}{green}}, and bad results (around 100 mm) are highlighted in {\bfseries\colorbox{dd_red}{red}}, results in between (around 50 mm) are defined by appropriate shades of {\bfseries\colorbox{dd_yellow}{yellow}} and {\bfseries\colorbox{dd_yelloworange}{orange}}.
+
+Results are colour-coded, with good results (around 10mm) highlighted in {\bfseries\colorbox{dd_green}{green}}, progressively worse results are highlighted in shades of {\bfseries\colorbox{dd_yellow}{yellow}} and {\bfseries\colorbox{dd_yelloworange}{orange}}, with the worst results highlighted in {\bfseries\colorbox{dd_red}{red}} (> 90mm).
+\FloatBarrier\section{Summary}
+\label{ap:sum}
+
+\begin{table}[!ht]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/general/baseline.pdf}
+    \caption{The experimental baseline, showing the results when the model is first trained on the MSRA training dataset, then tested on the test MSRA dataset and test synthetic datasets.}
+    \end{table}
+
+\begin{table}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{figs/general/results.pdf}
+        \caption{Summary of results over all experiments undertaken. Each experiment reports the average error over all joints for the two metrics described in Section \ref{sec:pm}. See Section \ref{es:exp} for details on the experiments performed.}
+    \end{table}
+
+
+% \FloatBarrier\section{Full Results}
+\label{ap:fullres}
+\setlength{\tabcolsep}{0.05cm}
+\FloatBarrier\section{Baseline Tests}
+% All results are in millimeters.
+\label{sec:ap:base}
+\input{other/results/msra.tex}
+\input{other/results/mano.tex}
+\input{other/results/maya.tex}
+
+\FloatBarrier\section{Training With The Random MANO Synthetic Dataset}
+% All results are in millimeters.
+\label{sec:ap:mano}
+\input{other/results/oro.tex}
+\input{other/results/ora.tex}
+\input{other/results/omo.tex}
+\input{other/results/oma.tex}
+
+\FloatBarrier\section{Training With The IK MANO Synthetic Dataset}
+% All results are in millimeters.
+\label{sec:ap:maya}
+\input{other/results/aro.tex}
+\input{other/results/ara.tex}
+\input{other/results/amo.tex}
+\input{other/results/ama.tex}
+
+% \FloatBarrier\section{Training With The MSRA Dataset Using Random MANO Weights}
+% All results are in millimeters.
+% \label{sec:ap:msra}
+% \input{other/results/msra-mano.tex}
+
+% \backslashbox{Startpoint}{Dataset} 

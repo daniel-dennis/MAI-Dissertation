@@ -1,0 +1,135 @@
+\documentclass[a4paper,oneside,12pt]{book}
+%----------------------------------------------------------------------------------------
+%	WELCOME!
+%   It's probably worth having a read through this file to set up the broad parameters.
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	COVER PAGE
+%   The cover page is laid out in title/title.tex. You can choose a colour
+%   or black and white logo
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%   Put title, author name, degree, type of work, school, department in here
+%   It will be used for the title page and for the embedded PDF information
+%----------------------------------------------------------------------------------------
+
+\newcommand{\thesistitle}{The Impact of Synthetic Data On The Reliability of Hand Tracking Systems} % Your thesis title, this is used in the title and abstract
+\newcommand{\degree}{MAI (Computer Engineering)} % Your degree name, this is used in the title page and abstract
+\newcommand{\typeofthesis}{dissertation} % dissertation, Final Year Project, report, etc.
+\newcommand{\authorname}{Daniel Desmond Dennis} % Your name, this is used in the title page and PDF stuff
+%% Comment out the next line if you don't want your ID to appear
+\newcommand{\authorid}{15316947} % Your ID
+\newcommand{\keywords}{this, that, more} % Keywords for your thesis
+\newcommand{\school}{\href{http://www.scss.tcd.ie}{School of Computer Science and Statistics}} % Your school's name and URL, this is used in the title page
+
+%% Comment out the next line if you don't want a department to appear
+%\newcommand{\department}{\href{http://researchgroup.university.com}{Department Name}} % Your research group's name and URL, this is used in the title page
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\thesistitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\keywords} % Set the PDF's keywords to your keywords
+\hypersetup{pdfsubject=\degree} % Set the PDF's keywords to your keywords
+}
+
+\usepackage[table]{xcolor}
+
+%% Language and font encodings
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+%% Bibliographical stuff
+\usepackage[square,sort,comma,numbers]{natbib}
+
+%% Document size
+% include showframe as an option if you want to see the boxes
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm,headheight=16pt]{geometry}
+\renewcommand{\baselinestretch}{1.1} 
+% \usepackage[margin=20mm, bindingoffset=15mm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+\usepackage[pdftex]{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{caption} % if no caption, no colon
+% \usepackage{sfmath} %use sans-serif in the maths sections too
+\usepackage[parfill]{parskip}    % Begin paragraphs with an empty line rather than an indent
+\usepackage{setspace} % to permit one-and-a-half or double spacing
+\usepackage{enumerate} % fancy enumerations like (i) (ii) or (a) (b) and suchlike
+% \usepackage{booktabs} % To thicken table lines
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{mathrsfs}
+
+% \usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{placeins}
+\usepackage{float}
+
+
+% \usepackage{listings}
+% \lstset{
+%   basicstyle=\linespread{0.94}\ttfamily,
+% %   columns=fullflexible,
+% %   frame=single,
+%   breaklines=true,
+%   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+%   numbers=left,
+% }
+% \let\Oldsubsection\subsection
+% \renewcommand{\subsection}{\FloatBarrier\subsection}
+
+\pagestyle{plain} % Embrace simplicity!
+
+%% It is not a requirement of the university that the font should be sans-serif, but
+%% the Mechanical engineers require it. Comment out the following line to disable it
+% \renewcommand{\familydefault}{\sfdefault} %use the sans-serif font as default
+
+%% If you're not using sans-serif, consider using Palatino instead of the LaTeX standard
+% \usepackage{mathpazo} % Use the Palatino font by default if you prefer it to Computer Modern
+
+\renewcommand{\theequation}{\arabic{equation}} %% use continuous equation numbers
+
+%% Format Chapter headings appropriately
+\usepackage{titlesec}
+\titleformat{\chapter}[hang] 
+{\normalfont\huge\bfseries}{\thechapter}{1cm}{} 
+
+\title{\thesistitle}
+\author{\authorname}
+
+% % Uncomment this for a dark-themed document
+% \definecolor{darkgrey}{rgb}{0.117,0.117,0.117}
+% \definecolor{lightgrey}{rgb}{0.828,0.828,0.828}
+% \pagecolor{darkgrey}
+% \color{lightgrey}
+\begin{document}
+\mainmatter
+
+% \maketitle
+{\centering {\Huge \bfseries Abstract: \thesistitle}
+
+{\Large Daniel Desmond Dennis}
+
+{\large April 2020}
+
+}
+
+This dissertation investigates the merits of using synthetic data for training a hand tracking model to address the problem of the lack of training data for such systems. This is achieved by looking at two different synthetic data generation strategies, and training an existing hand tracking model to see how it performs on those generated synthetic datasets. An existing real dataset, the MSRA dataset is used as a control. The MANO model is used as the basis for generating synthetic data, and V2V-Posenet is used as the existing hand tracking model. The first strategy generates the data based on random parameters for MANO, this is referred to as the {\slshape Random MANO Dataset}. The second strategy generates the data based on parameters determined from the groundtruth of the real dataset to recreate that real dataset using inverse kinematics, this is referred to as the {\slshape IK MANO Dataset}.
+
+In recent years, the accuracy of hand tracking systems has improved with the use of {\slshape convolutional neural networks} (CNNs). However, these systems need comprehensive training data, and such a dataset does not exist currently. This need is underlined by the fact that current hand tracking systems do not generalise well for a given training dataset, and performs poorly for hand poses that are not covered by that training dataset. The reasons for this lack of data are twofold. Firstly, annotating these datasets is difficult. Secondly, the human hand is a uniquely complex object, and a comprehensive dataset needs to cover a diverse range of; camera perspectives, hand poses, hand shapes, and interactions with objects, so the amount of data that needs to be collected to cover these ranges is also unknown. Synthetic data offers a way around this issue, since the annotation is theoretically perfect, and the capture of that data can be automated.
+
+This dissertation shows that generating synthetic based on the {\slshape Random MANO Dataset} strategy shows promise, but more testing is required by generating more synthetic images. State-of-the-art results on this test dataset is demonstrated at an 8.90mm average per-joint mean squared error, but poor performance when comparing with the real test dataset. It also shows that trying to recreate a real dataset with the {\slshape IK MANO Dataset} is challenging, with efforts to achieve this showing poor performance at 77.44mm. The key contributions of this dissertation are (1) performing a side-by-side comparison between a synthetic and real hand tracking dataset using the state-of-the-art synthetic hand data generation method, MANO, (2) giving the basis for a new synthetic dataset based on the MANO model with the {\slshape Random MANO Dataset}, and (3) providing a new framework for generating a synthetic dataset by using a real dataset as a basis with the {\slshape IK MANO Dataset}.
+
+
+\end{document}
